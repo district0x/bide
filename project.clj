@@ -6,8 +6,14 @@
   :dependencies [[org.clojure/clojure "1.9.0" :scope "provided"]
                  [org.clojure/clojurescript "1.10.339" :scope "provided"]]
 
-  :deploy-repositories {"releases" :clojars
-                        "snapshots" :clojars}
+  :deploy-repositories [["snapshots" {:url "https://clojars.org/repo"
+                                      :username :env/clojars_username
+                                      :password :env/clojars_password
+                                      :sign-releases false}]
+                        ["releases"  {:url "https://clojars.org/repo"
+                                      :username :env/clojars_username
+                                      :password :env/clojars_password
+                                      :sign-releases false}]]
   :source-paths ["src" "assets"]
   :test-paths ["test"]
   :jar-exclusions [#"\.swp|\.swo|user.clj"]
